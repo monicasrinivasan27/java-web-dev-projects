@@ -20,31 +20,35 @@ public class countingCharacters {
                 "quadratics into a form that can be factored allowing that side of " +
                 "the equation to equal zero." +
                 " Once you’ve done that, it’s pretty straightforward from there.";*/
+
+
+        stringVal = stringVal.replaceAll("(^| )[^ ]*[^A-Za-z ][^ ]*(?=$| ) ", "");
         char[] charactersInString = stringVal.toCharArray();
 
         HashMap<Character, Integer> charValues = new HashMap<>();
           for (int i = 0; i < charactersInString.length; i++) {
-              int counter= 0;
-              if (i==0){
-                  charValues.put(charactersInString[i], 1);
-              }
+              if (charactersInString[i] !=' ') {
 
-            for (Map.Entry<Character, Integer> loopValue : charValues.entrySet()) {
-
-
-                  if ((charactersInString[i])==(loopValue.getKey())) {
-                      charValues.put(loopValue.getKey(), loopValue.getValue()+1);
-                       counter= 1;
+                  int counter = 0;
+                  if (i == 0) {
+                      charValues.put(charactersInString[i], 1);
                   }
 
-               //   System.out.println(charactersInString[i]);
-            }
-            if (counter==0)
-              {
-                  charValues.put(charactersInString[i],1);
+                  for (Map.Entry<Character, Integer> loopValue : charValues.entrySet()) {
+
+
+                      if (Character.toUpperCase((charactersInString[i])) == Character.toUpperCase(((loopValue.getKey())))) {
+                          charValues.put(loopValue.getKey(), loopValue.getValue() + 1);
+                          counter = 1;
+                      }
+
+                      //   System.out.println(charactersInString[i]);
+                  }
+                  if (counter == 0) {
+                      charValues.put(charactersInString[i], 1);
+                  }
+
               }
-
-
         }
        for (Map.Entry<Character, Integer> loopValue : charValues.entrySet()) {
           System.out.println(loopValue.getKey() + " :" + loopValue.getValue() );
