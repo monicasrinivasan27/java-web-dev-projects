@@ -21,13 +21,20 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
-        for (char ch : str.toCharArray()) {
+        int pair =0;
+         for (char ch : str.toCharArray()) {
+
             if (ch == '[') {
                 brackets++;
-            } else if (ch == ']') {
+                pair=1;
+               } else if (ch == ']' && pair==1) {
                 brackets--;
+                 } else if (ch == ']') {
+                brackets++;
             }
+             System.out.println("brackets"+brackets);
         }
+
         return brackets == 0;
     }
 }
