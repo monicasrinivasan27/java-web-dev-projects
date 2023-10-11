@@ -1,5 +1,7 @@
 package org.launchcode;
 
+import java.util.Objects;
+
 public class MenuItem {
     private double price;
     private String description;
@@ -28,5 +30,20 @@ public class MenuItem {
     public void setNew(boolean aNew) {
         isNew = aNew;
     }
+
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "description='" + description + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MenuItem menuItem)) return false;
+        return Objects.equals(description, menuItem.description) && Objects.equals(category, menuItem.category);
+    }
+
 }
 
